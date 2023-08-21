@@ -4,12 +4,15 @@ export const SubmissionList = async () => {
     // Get the submissions from your API
 
     let submissionHTML = ""
-    for (const submission of submissions)
-    
-    submissionHTML += `<section class ="submission">
-    <div>Owns Jeans? ${submission.ownsBlueJeans}</div> 
-    <div>Area type foreign key? ${submission.socioLocationId}</div>                    
-    </section>`
+    //for (const submission of submissions)
+    const divStringArray = submissions.map((submission) =>{
+        submissionHTML += `<section class ="submission">
+        <div>Owns Jeans? ${submission.ownsBlueJeans}</div> 
+        <div>Area type foreign key? ${submission.socioLocationId}</div>                    
+        </section>`
 
+    })
+    submissionHTML += divStringArray.join("");
+    
     return submissionHTML
 }

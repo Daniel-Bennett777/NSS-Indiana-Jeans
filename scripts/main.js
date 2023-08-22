@@ -5,7 +5,7 @@ import { LocationTypeChoices } from "./UrbanDweller.js"
 const container = document.querySelector("#container")
 
 const render = async () => {
-    const jeanOwnershipHTML = OwnsJeansChoices()
+    const jeanOwnershipHTML = await OwnsJeansChoices()
     const locationsHTML = await LocationTypeChoices()
     const buttonHTML = await SaveSubmission()
     const submissionListHTML = await SubmissionList()
@@ -19,5 +19,8 @@ const render = async () => {
 
 }
 
-document.addEventListener("newSubmissionCreated", render)
+document.addEventListener("newSubmissionCreated", event => {
+    console.log("State of data has changed. Regenerating HTML...")
+    render()
+})
 render()
